@@ -24,17 +24,20 @@ function generateRandomUsername() {
 
 
 io.on('connection', (socket) => {
-    const username = generateRandomUsername(socket.id);
-    console.log("Generated username in index.js as " + username);
-    io.emit('user connected', { username: username });
-
-    socket.on('disconnect', () => {
-        console.log('user disconnected', socket.id);
+    const username = generateRandomUsername();
+    console.log(`${username} connected`);
+    
+    socket.emit('user connected', {
+        username: username,
     });
 
     socket.on('chat message', (data) => {
         console.log('Received message:', data);
         io.emit('chat message', data);
+    });
+
+    socket.on('disconnect', () => {
+        console.log(`${username} disconnected`);
     });
 });
 
