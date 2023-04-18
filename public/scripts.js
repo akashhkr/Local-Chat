@@ -39,15 +39,23 @@ $(function () {
             messageClass = 'outgoing';
             messageUsername = '';
         }
-        
+
         const messageElement = $('<li>').addClass(messageClass);
         const usernameElement = $('<span>').addClass('username').text(messageUsername);
-        const messageTextElement = $('<span>').addClass('message-text').text(`${data.message}`);
-        messageElement.append(usernameElement).append(messageTextElement);
+        const messageTextElement = $('<span>').addClass('message-text').text(data.message);
+
+        if (messageClass === 'incoming') {
+            messageElement.append(usernameElement).append('<br>').append(messageTextElement);
+        }
+        else {
+            messageElement.append(messageTextElement);
+        }
+
         $('#messages').append(messageElement);
         // Scroll to the bottom of the chat messages container
         $('#messages').scrollTop($('#messages')[0].scrollHeight);
     });
+    
 
     socket.on('user disconnected', function (data) {
         const systemMessageElement = $('<li>').addClass('system-message').text(`${data.username} left the chat`);
