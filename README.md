@@ -1,4 +1,4 @@
-# Chat App
+# Local server group chat
 
 This is a simple chat application that allows users to send text messages in real-time. The application runs on a local server on your PC and can be accessed using a web browser on your laptop or mobile device. Users are assigned anonymous usernames and can join the chat room to start sending messages.
 
@@ -22,7 +22,7 @@ To start the chat app, navigate to the project directory in your terminal and ru
 
 This will start the server and the chat app will be accessible at `http://localhost:3000` in your web browser.
 
-To join the chat room, simply enter a username and click on the "Join Chat" button. You can then start sending messages in real-time to other users in the chat room.
+You will be assigned an anonymous username and you can start sending and receiving messages.
 
 ## Contributing
 
